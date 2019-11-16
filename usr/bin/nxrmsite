@@ -1,0 +1,53 @@
+#!/bin/sh
+
+hosts="/etc/hosts"
+sites="/etc/nginx/sites-available"
+
+# Validate domain
+domain=$1
+if [ ! $domain ]; then
+    echo "Domain name not provided."
+    exit
+fi
+
+# Validate site
+site=$2
+if [ ! $site ]; then
+    site="${domain}.conf"
+fi
+
+# Validate directory
+dir=$3
+if [ ! $dir ]; then
+    dir="${PWD}/${domain}"
+fi
+
+# Validate host
+host=$4
+if [ ! $host ]; then
+    host="127.0.0.1"
+fi
+
+if [ ! -f $hosts -o ! -w $hosts ]; then
+    echo "Hosts $hosts not exists or not writable."
+    exit
+fi
+
+if [ ! -d $dir ]; then
+    echo "Directory not exists."
+    exit
+fi
+
+vhost="$sites/$site"
+if [ ! -f $vhost ]; then
+    echo "Virtual host not exists."
+    exit
+fi
+
+# https://www.tutorialspoint.com/unix/unix-regular-expressions.htm
+sed -i "/^${host}[[:space:]][[:space:]][[:space:]]${domain}$/d" $hosts
+
+nxdissite $site
+nxreload
+rm -R $dir
+rm $vhost

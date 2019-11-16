@@ -1,0 +1,5 @@
+export NXPATH="/etc/nginx"
+export NXSITES="$NXPATH/sites-available"
+export NXLOG="/var/log/nginx"
+export NXERRORLOG="$NXLOG/error.log"
+export NXACCESSLOG="$NXLOG/access.log"

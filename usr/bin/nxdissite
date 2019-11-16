@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Global variables
+sites="/etc/nginx/sites-enabled"
+
+site=$1
+if [ ! $site ]; then
+    echo "Virtual host name not provided."
+    exit
+fi
+
+# Validate /etc/nginx/sites-enabled
+if [ ! -d $sites ]; then
+    echo "Path $sites not exists. Please sure the Nginx is installed."
+    exit
+fi
+
+# Validate virtual host
+vhost="$sites/$site"
+if [ -f $vhost ]; then
+    echo "Virtual host $vhost exists."
+    exit
+fi
+
+rm $vhost

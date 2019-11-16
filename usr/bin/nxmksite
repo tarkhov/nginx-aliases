@@ -1,0 +1,78 @@
+#!/bin/sh
+
+# Global variables
+hosts="/etc/hosts"
+sites="/etc/nginx/sites-available"
+nxsite="/etc/nginx/nxsite.conf"
+
+# Validate domain
+domain=$1
+if [ ! $domain ]; then
+    echo "Domain name not provided."
+    exit
+fi
+
+# Validate site
+site=$2
+if [ ! $site ]; then
+    site="${domain}.conf"
+fi
+
+# Validate directory
+dir=$3
+if [ ! $dir ]; then
+    dir="${PWD}/${domain}"
+fi
+
+# Validate host
+host=$4
+if [ ! $host ]; then
+    host="127.0.0.1"
+fi
+
+# Validate /etc/hosts
+if [ ! -f $hosts -o ! -w $hosts ]; then
+    echo "Hosts $hosts not exists or not writable."
+    exit
+fi
+
+# Validate /etc/nginx/sites-available
+if [ ! -d $sites ]; then
+    echo "Path $sites not exists. Please sure the Nginx is installed."
+    exit
+fi
+
+# Validate virtual host
+vhost="$sites/$site"
+if [ -f $vhost ]; then
+    echo "Virtual host $vhost exists."
+    exit
+fi
+
+# Validate nxsite.conf
+if [ ! -f $nxsite ]; then
+    echo "File $nxsite not exists."
+    exit
+fi
+
+# Create virtual host
+# http://rosettacode.org/wiki/Read_entire_file#UNIX_Shell
+site_data=$(printf '%s\n' "$(cat $nxsite)" | sed -e "s/\${SITE_NAME}/${domain}/g" | sed -e "s#\${SITE_DIR}#${dir}#g")
+printf '%s\n' "$site_data" > $vhost
+
+# Validate site directory and make if not exists
+if [ ! -d $dir ]; then
+    mkdir -p $dir
+    if [ $SUDO_USER ]; then
+        chown -R "$SUDO_USER:$SUDO_USER" $dir
+    fi
+fi
+
+# Create record in /etc/hosts
+echo "$host   $domain" >> $hosts
+
+# Enable virtual host
+nxensite $site
+
+# Reload Nginx
+nxreload
