@@ -48,6 +48,6 @@ fi
 sed -i "/^${host}[[:space:]][[:space:]][[:space:]]${domain}$/d" $hosts
 
 nxdissite $site
-nxreload
+systemctl reload nginx
 rm -R $dir
 rm $vhost

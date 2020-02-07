@@ -38,7 +38,7 @@ fi
 
 # Validate /etc/nginx/sites-available
 if [ ! -d $sites ]; then
-    echo "Path $sites not exists. Please sure the Nginx is installed."
+    echo "Path $sites not exists. Please sure the Apache2 is installed."
     exit
 fi
 
@@ -74,5 +74,5 @@ echo "$host   $domain" >> $hosts
 # Enable virtual host
 nxensite $site
 
-# Reload Nginx
-nxreload
+# Reload Apache
+systemctl reload nginx
