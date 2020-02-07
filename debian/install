@@ -1,0 +1,14 @@
+etc/nginx/nxsite.conf etc/nginx
+etc/profile.d/nxpath.sh etc/profile.d
+etc/profile.d/nxaliases.sh etc/profile.d
+usr/bin/nxdisable usr/bin
+usr/bin/nxdissite usr/bin
+usr/bin/nxenable usr/bin
+usr/bin/nxensite usr/bin
+usr/bin/nxmksite usr/bin
+usr/bin/nxreload usr/bin
+usr/bin/nxrestart usr/bin
+usr/bin/nxrmsite usr/bin
+usr/bin/nxstart usr/bin
+usr/bin/nxstatus usr/bin
+usr/bin/nxstop usr/bin
