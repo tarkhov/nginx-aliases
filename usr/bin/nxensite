@@ -17,7 +17,7 @@ fi
 
 # Validate virtual host
 vhost="$sites/$site"
-if [ -f $vhost ]; then
+if [ ! -f $vhost ]; then
     echo "Virtual host $vhost exists."
     exit
 fi
