@@ -1,3 +1,9 @@
+nxsite (0.1.2-1) bionic; urgency=medium
+
+  * Quick fix.
+
+ -- Alexander Tarkhov <agtuks@gmail.com>  Mon, 02 Mar 2020 00:12:33 +0200
+
 nxsite (0.1.1-1) bionic; urgency=medium
 
   * Second release
