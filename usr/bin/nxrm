@@ -1,3 +1,3 @@
 #!/bin/sh
 
-nxrmsite
+nxrmsite $1 $2 $3 $4
