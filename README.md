@@ -7,6 +7,7 @@ Nginx HTTP Server site creation and removing tools using command line.
 1. [Compatibility](#compatibility)
 2. [Installation](#installation)
    1. [Ubuntu](#ubuntu)
+   2. [Manually](#manually)
 3. [Usage](#usage)
    1. [Site creation](#site-creation)
    2. [Site removing](#site-removing)
@@ -19,7 +20,7 @@ Nginx HTTP Server site creation and removing tools using command line.
 
 Name | Version
 ------- | -------
-Ubuntu | >= 16.04
+Ubuntu | >= 18.04
 Nginx | >= 1
 
 ## Installation
@@ -32,6 +33,12 @@ From PPA:
 sudo add-apt-repository ppa:tarkhov/ppa
 sudo apt update
 sudo apt install nxsite
+```
+
+### Manually
+
+```bash
+sudo dpkg -i nxsite_1.0.0-1_amd64.deb
 ```
 
 ## Usage
@@ -77,17 +84,13 @@ sudo nxrmsite mydomain
 
 Alias | Command
 ------- | -------
-`nxd` | `nxdisable`
-`nxds` | `nxdissite`
-`nxe` | `nxenable`
-`nxes` | `nxensite`
-`nxmk` | `nxmksite`
-`nxrl` | `nxreload`
-`nxrm` | `nxrmsite`
-`nxrs` | `nxrestart`
-`nxs` | `nxstart`
-`nxsp` | `nxstop`
-`nxst` | `nxstatus`
+`nxdisable` | `systemctl disable nginx`
+`nxenable` | `systemctl enable nginx`
+`nxreload` | `systemctl reload nginx`
+`nxrestart` | `systemctl restart nginx`
+`nxstart` | `systemctl start nginx`
+`nxstatus` | `systemctl status nginx`
+`nxstop` | `systemctl stop nginx`
 
 ## Removing
 

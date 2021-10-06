@@ -11,14 +11,3 @@ usr/bin/nxrmsite usr/bin
 usr/bin/nxstart usr/bin
 usr/bin/nxstatus usr/bin
 usr/bin/nxstop usr/bin
-usr/bin/nxd usr/bin
-usr/bin/nxds usr/bin
-usr/bin/nxe usr/bin
-usr/bin/nxes usr/bin
-usr/bin/nxmk usr/bin
-usr/bin/nxrl usr/bin
-usr/bin/nxrm usr/bin
-usr/bin/nxrs usr/bin
-usr/bin/nxs usr/bin
-usr/bin/nxsp usr/bin
-usr/bin/nxst usr/bin
