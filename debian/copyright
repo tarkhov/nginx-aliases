@@ -3,11 +3,11 @@ Upstream-Name: nxsite
 Source: https://github.com/tarkhov/nxsite
 
 Files: *
-Copyright: 2019-2020 Alexander Tarkhov <agtuks@gmail.com>
+Copyright: 2019-2022 Alexander Tarkhov <agtuks@gmail.com>
 License: MIT
 
 Files: debian/*
-Copyright: 2019-2020 Alexander Tarkhov <agtuks@gmail.com>
+Copyright: 2019-2022 Alexander Tarkhov <agtuks@gmail.com>
 License: MIT
 
 License: MIT
